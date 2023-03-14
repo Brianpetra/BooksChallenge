@@ -119,19 +119,17 @@ const mainController = {
           }
           return res.redirect('/')
         }
-        return res.render('users/login', { tittle:'Login',
-                                  errors:{
+        return res.render('login', { errors:{
                                     password:{
                                       msg:'Credenciales invalidas - password'
                                     }
                                   }
                         })
       }
-      return res.render('users/login.ejs',{ tittle:'Login',
-      errors:{
-        email:{
-          msg:'Credenciales invalidas - email '
-        }
+      return res.render('login',{ errors:{
+                                    email:{
+                                    msg:'Credenciales invalidas - email '
+                                  }
       }
       })
     })
