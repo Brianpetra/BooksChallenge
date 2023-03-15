@@ -49,15 +49,17 @@ const mainController = {
 
   deleteBook: (req, res) => {
     // Implement delete book
-    db.Book.destroy(
-      {
-        where: {id: req.params.id}
+    db.Book.findAll({
+      include: [{ association: "authors" }],
+      where: {
+        id: {
+          [Op.ne]: req.params.id
+        }
       }
-    )
-    .then(() => {
-      res.redirect('/');
     })
-    .catch((error) => console.log(error))
+      .then( books => {
+        res.render('home', { books, message: req.session.message })
+      } )
   },
 
   authors: (req, res) => {

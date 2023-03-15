@@ -18,10 +18,12 @@ module.exports = (sequelize, dataTypes) => {
       type: dataTypes.STRING
     }
   };
+  
   let config = {
     tableName: 'books',
-    timestamps: false
+    timestamps: false,
   };
+
   const Book = sequelize.define(alias, cols, config);
 
   Book.associate = function (models) {
